@@ -226,7 +226,7 @@ const Data3 = ({ setActiveForm }) => {
 
       {/* code for adding and removing functionality */}
       <div><Data3a></Data3a></div>
-      <Button text={"Select Shiping"} onClick={validate} />
+      <Button size={550} text={"Select Shiping"} onClick={validate} />
     </div>
   );
 };

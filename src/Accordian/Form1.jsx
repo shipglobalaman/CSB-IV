@@ -47,7 +47,7 @@ const Form1 = ({ isOpen, activeForm, onClick, setActiveForm }) => {
       >
         Continue
       </button> */}
-      <Button text={"Continue"} onClick={handleSubmitButton} />
+      <Button text={"Continue"} size={600} onClick={handleSubmitButton} />
     </Accordian>
   );
 };

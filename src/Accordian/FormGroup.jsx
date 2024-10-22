@@ -21,7 +21,7 @@ const FormGroup = () => {
         </h5>
       </div>
       <Form1
-        isOpen={activeForm === 1} //no need of this prop
+        isOpen={activeForm === 1} 
         setActiveForm={setActiveForm}
         activeForm={activeForm}
       />
