@@ -1,6 +1,8 @@
 import Data3a from "./Data3a";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import Button from "../UI/Button";
+import InputField from "../UI/InputField";
+import MeasureInput from "../UI/MeasureInput";
 const Data3 = ({ setActiveForm }) => {
   const [invoiceNumber, setinvoiceNumber] = useState("");
   const [errorinvoiceNumber, setErrorinvoiceNumber] = useState("");
@@ -8,10 +10,14 @@ const Data3 = ({ setActiveForm }) => {
   const [errorphoneNumber, setErrorphoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
-  // validation on the second part
   const [deadWeight, setDeadWeight] = useState("");
   const [errordeadWeight, setErrordeadWeight] = useState("");
-  const validate =  (e) => {
+  const [length, setLength] = useState("");
+  const [breadth, setBreadth] = useState("");
+  const [height, setHeight] = useState("");
+
+  // validation on the second part
+  const validate = (e) => {
     e.preventDefault();
     let isValid = true;
     let tempinvoiceNumber = "";
@@ -62,10 +68,10 @@ const Data3 = ({ setActiveForm }) => {
   };
 
   return (
-    <div className="w-[700px] bg-white border-[1px] border-slate-300">
+    <div className="w-[700px] bg-white border-[1px] border-slate-300 p-4">
       {/* Below Div conatining 5 basic info */}
       <div className="grid grid-cols-1 md:grid-cols-3 pt-2 gap-4 mb-6 mx-4">
-        <div>
+        {/* <div>
           <label
             htmlFor="invoiceNumber"
             className="block text-sm font-medium text-gray-700 mb-1"
@@ -83,8 +89,19 @@ const Data3 = ({ setActiveForm }) => {
           <p className="text-red-600 text-xs font-semibold ml-1 mt-1">
             {errorinvoiceNumber}
           </p>
-        </div>
-        <div>
+
+      
+        </div> */}
+        <InputField
+          label="Invoice Number"
+          type="text"
+          value={invoiceNumber}
+          onChange={(e) => setinvoiceNumber(e.target.value)}
+          placeholder="Enter Invoice No..."
+          error={errorinvoiceNumber}
+          required
+        />
+        {/* <div>
           <label
             htmlFor="invoiceDate"
             className="block text-sm font-medium text-gray-700 mb-1"
@@ -97,13 +114,20 @@ const Data3 = ({ setActiveForm }) => {
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 h-[42px]"
             placeholder="Enter Last Name..."
           />
-        </div>
-        <div>
+        </div> */}
+        <InputField
+          label="Invoice Date"
+          type="date"
+          name="invoiceDate"
+          placeholder="Select Invoice Date..."
+          required
+        />
+        {/* <div>
           <label
             htmlFor="mobileNumber"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            Mobile Number <span className="text-red-500">*</span>
+            Mobile Number <span className="text-purple-900">*</span>
           </label>
           <input
             type="tel"
@@ -116,11 +140,20 @@ const Data3 = ({ setActiveForm }) => {
           <p className="text-red-600 text-xs font-semibold ml-1 mt-1">
             {errorphoneNumber}
           </p>
-        </div>
+        </div> */}
+        <InputField
+          label="Mobile Number"
+          type="tel"
+          value={phoneNumber}
+          onChange={(e) => setphoneNumber(e.target.value)}
+          placeholder="Enter Mobile Number..."
+          error={errorphoneNumber}
+          required
+        />
       </div>
 
-      <div className="mb-6">
-        <label
+      <div className="mb-6 ml-4 w-52">
+        {/* <label
           htmlFor="email"
           className="block text-sm font-medium text-gray-700 mb-1  mx-4"
         >
@@ -136,7 +169,16 @@ const Data3 = ({ setActiveForm }) => {
         />
         <p className="text-red-600 text-xs font-semibold ml-5 mt-1">
           {errorEmail}
-        </p>
+        </p> */}
+        <InputField
+          label="Email Address"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter Email ID..."
+          error={errorEmail}
+          required
+        />
       </div>
 
       {/* second part of the form */}
@@ -145,88 +187,48 @@ const Data3 = ({ setActiveForm }) => {
           <h2 className=" text-[20px] font-bold ">Box Measurements</h2>
         </div>
         <div className="grid lg:grid-cols-4 gap-2 pb-7 py-2 px-4 md:grid-cols-2">
-          <div>
-            <label
-              somelabel="Dead Weight"
-              className="block text-sm font-medium text-gray-700 mb-1  "
-            >
-              Dead Weight
-              <span className="text-red-600 ml-1">*</span>{" "}
-            </label>
-            <div className="flex rounded-md mt-2">
-              <input
-                onChange={(e) => setDeadWeight(e.target.value)}
-                type="number"
-                placeholder="Eg. 1.25"
-                className="flex-grow p-2 border rounded-l-md  focus:border-l-indigo-600 focus:border-t-indigo-600 focus:border-b-indigo-600 focus:outline-none transition-all duration-200 hover:bg-gray-50 w-28"
-              />
-              <span className="px-3 bg-gray-200 rounded-r-md  py-1.5">kg</span>{" "}
-              {/* Fixed component */}
-            </div>
-            <p className="text-red-600 text-xs font-semibold ml-1 mt-1">
-              {errordeadWeight}
-            </p>
-          </div>
-          <div>
-            <label
-              somelabel="Length"
-              className="block text-sm font-medium text-gray-700 mb-1  "
-            >
-              Length
-              <span className="text-red-600 ml-1">*</span>{" "}
-            </label>
-            <div className="flex mt-2">
-              <input
-                type="number"
-                placeholder="Eg. 1.25"
-                className="flex-grow p-2 border rounded-l-md  focus:border-l-indigo-600 focus:border-t-indigo-600 focus:border-b-indigo-600 focus:outline-none transition-all duration-200 hover:bg-gray-50 w-28"
-              />
-              <span className="px-3 bg-gray-200 rounded-r-md py-1.5 ">cm</span>{" "}
-              {/* Fixed component */}
-            </div>
-          </div>
-          <div>
-            <label
-              somelabel="Breadth"
-              className="block text-sm font-medium text-gray-700 mb-1  "
-            >
-              Breadth
-              <span className="text-red-600 ml-1">*</span>{" "}
-            </label>
-            <div className="flex mt-2">
-              <input
-                type="number"
-                placeholder="Eg. 1.25"
-                className="flex-grow p-2 border rounded-l-md  focus:border-l-indigo-600 focus:border-t-indigo-600 focus:border-b-indigo-600 focus:outline-none transition-all duration-200 hover:bg-gray-50 w-28"
-              />
-              <span className="px-3 bg-gray-200 rounded-r-md py-1.5">cm</span>{" "}
-              {/* Fixed component */}
-            </div>
-          </div>
-          <div>
-            <label
-              somelabel="Height"
-              className="block text-sm font-medium text-gray-700 mb-1  "
-            >
-              Height
-              <span className="text-red-600 ml-1">*</span>{" "}
-            </label>
-            <div className="flex  mt-2">
-              <input
-                type="number"
-                placeholder="Eg. 1.25"
-                className="flex-grow p-2 border rounded-l-md  focus:border-l-indigo-600 focus:border-t-indigo-600 focus:border-b-indigo-600 focus:outline-none transition-all duration-200 hover:bg-gray-50 w-28"
-              />
-              <span className="px-3 bg-gray-200 rounded-r-md py-1.5">cm</span>{" "}
-              {/* Fixed component */}
-            </div>
-          </div>
+          <MeasureInput
+            label="Dead Weight"
+            value={deadWeight}
+            onChange={(e) => setDeadWeight(e.target.value)}
+            placeholder="Eg. 1.25"
+            error={errordeadWeight}
+            required
+          />
+          <MeasureInput
+            label="Length"
+            value={length}
+            onChange={(e) => setLength(e.target.value)}
+            placeholder="Eg. 1.25"
+            // error={errorLength}
+            required
+          />
+
+          <MeasureInput
+            label="Breadth"
+            value={breadth}
+            onChange={(e) => setBreadth(e.target.value)}
+            placeholder="Eg. 1.25"
+            // error={errorBreadth}
+            required
+          />
+
+          <MeasureInput
+            label="Height"
+            value={height}
+            onChange={(e) => setHeight(e.target.value)}
+            placeholder="Eg. 1.25"
+            // error={errorHeight}
+            required
+          />
         </div>
       </div>
 
       {/* code for adding and removing functionality */}
-      <div><Data3a></Data3a></div>
-      <Button size={550} text={"Select Shiping"} onClick={validate} />
+      <div>
+        <Data3a />
+      </div>
+      <Button size={530} text={"Select Shipping"} onClick={validate} />
     </div>
   );
 };

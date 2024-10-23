@@ -9,7 +9,7 @@ const FormGroup = () => {
   const [activeForm, setActiveForm] = useState(1);
 
   return (
-    <div className=" grid justify-center items-center w-[700px] mx-64 my-10 gap-2 ">
+    <div className=" grid justify-center items-center w-[700px] mx-64 my-10  gap-2 ">
       <div className=" flex flex-col mb-3">
         <h1 className="text-[25px] font-semibold">Create CSB-IV Order</h1>
         <h5 className="text-slate-300 flex text-sm">

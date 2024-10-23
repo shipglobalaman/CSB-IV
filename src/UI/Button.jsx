@@ -1,8 +1,9 @@
-const Button = ({text,onClick,size}) => {
+const Button = ({ text, onClick, size }) => {
   return (
     <div>
       <button
-        className={`bg-blue-900  ml-[${size}px] mb-5 text-white rounded-md p-1 `}
+        className="bg-blue-900 mb-5 text-white rounded-md p-2"
+        style={{ marginLeft: `${size}px` }}
         onClick={onClick}
       >
         {text}

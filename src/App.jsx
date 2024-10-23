@@ -13,7 +13,7 @@ function App() {
  return (
   <div className="bg-slate-50">
     <Navbar/>
-    <div className="grid grid-cols-2 bg-slate-50">
+    <div className="bg-slate-50">
     <FormGroup/>
     {/* <SideLayout></SideLayout> */}
     </div>

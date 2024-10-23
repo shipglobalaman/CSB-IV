@@ -10,7 +10,7 @@ const Form2 = ({ isOpen, onClick, setActiveForm, activeForm }) => {
       title={"Consignor Details"}
       num={2}
     >
-      <Data2 setActiveForm={setActiveForm} isOpen={isOpen}></Data2>
+      <Data2 setActiveForm={setActiveForm} isOpen={isOpen} />
     </Accordian>
   );
 };

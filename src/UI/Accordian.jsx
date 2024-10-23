@@ -2,7 +2,7 @@ import { Children } from "react";
 
 const Accordian = ({ children, isOpen, activeForm, title, onClick, num ,setActiveForm }) => {
   return (
-    <div>
+    <div className=" ">
       {/* this div is for title */}
       <div
         className={`${
